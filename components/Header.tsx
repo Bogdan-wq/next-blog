@@ -3,24 +3,24 @@ import Link from 'next/link';
 import Container from './Container';
 
 const HeaderWrapper = styled.div`
-    padding:25px 0;
-`
+    padding: 25px 0;
+`;
 
 const HeaderNav = styled.nav`
-    display:flex;
-`
+    display: flex;
+`;
 
 const HeaderLink = styled.a`
-    color:#393939;
-    font-size:25px;
-    transition:all .2s;
+    color: #393939;
+    font-size: 25px;
+    transition: all 0.2s;
     &:not(:first-child) {
-        margin-left:25px;
+        margin-left: 25px;
     }
     &:hover {
-        color:rgb(140,140,140);
+        color: rgb(140, 140, 140);
     }
-`
+`;
 
 const Header = () => {
     return (
@@ -28,19 +28,15 @@ const Header = () => {
             <Container>
                 <HeaderNav>
                     <Link href="/">
-                        <HeaderLink>
-                            Home
-                        </HeaderLink>
+                        <HeaderLink>Home</HeaderLink>
                     </Link>
                     <Link href="/posts/new">
-                        <HeaderLink>
-                            New post
-                        </HeaderLink>
+                        <HeaderLink>New post</HeaderLink>
                     </Link>
                 </HeaderNav>
             </Container>
         </HeaderWrapper>
-    )
-}
+    );
+};
 
 export default Header;

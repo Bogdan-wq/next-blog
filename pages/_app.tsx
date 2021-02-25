@@ -1,9 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 import NextNProgress from 'nextjs-progressbar';
-import {wrapper} from './../store';
+import { wrapper } from './../store';
 
 const fontFace = (name: string, src: string): string => {
-  return `
+    return `
     @font-face {
       font-family:${name},
       src:url('./../assets/fonts/${src}')
@@ -13,8 +13,8 @@ const fontFace = (name: string, src: string): string => {
 
 const GlobalStyle = createGlobalStyle`
 
-    ${fontFace("Roboto Regular", "Roboto-Regular.ttf")}
-    ${fontFace("Roboto Light", "Roboto-Light.ttf")}
+    ${fontFace('Roboto Regular', 'Roboto-Regular.ttf')}
+    ${fontFace('Roboto Light', 'Roboto-Light.ttf')}
 
     html,body {
       padding: 0;
@@ -50,15 +50,14 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-
 function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <NextNProgress color="black" startPosition={0.3} height={2} />
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </>
-  );
+    return (
+        <>
+            <NextNProgress color="black" startPosition={0.3} height={2} />
+            <GlobalStyle />
+            <Component {...pageProps} />
+        </>
+    );
 }
 
 export default wrapper.withRedux(MyApp);

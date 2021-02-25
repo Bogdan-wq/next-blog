@@ -1,0 +1,13 @@
+/.next
+/assets
+/node_modules
+/public
+.babelrc
+.eslintrc.js
+/eslintignore
+.prettierrc
+.prettierignore
+package-lock.json
+package.json
+README.node_modules
+tsconfig.json

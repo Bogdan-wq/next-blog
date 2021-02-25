@@ -1,50 +1,50 @@
 import { FormActions } from './action-creators';
-import {HYDRATE} from 'next-redux-wrapper';
+import { HYDRATE } from 'next-redux-wrapper';
 
 interface InitialState {
-    inputs:{
-        title:string;
-        body:string;
-    }
-    loading:boolean;
+    inputs: {
+        title: string;
+        body: string;
+    };
+    loading: boolean;
 }
 
-const initialState : InitialState = {
-    inputs:{
-        title:'',
-        body:''
+const initialState: InitialState = {
+    inputs: {
+        title: '',
+        body: '',
     },
-    loading:false
-}
+    loading: false,
+};
 
-const formReducer = (state = initialState,action : FormActions) => {
+const formReducer = (state = initialState, action: FormActions) => {
     switch (action.type) {
         //@ts-ignore
         case HYDRATE: {
             //@ts-ignore
-            return {...action.payload['form']};
+            return { ...action.payload['form'] };
         }
-        case '@form/CHANGE_INPUT':{
+        case '@form/CHANGE_INPUT': {
             return {
                 ...state,
-                inputs:{
+                inputs: {
                     ...state.inputs,
-                    [action.payload.name]:action.payload.value
-                }
-            }
+                    [action.payload.name]: action.payload.value,
+                },
+            };
         }
 
-        case '@form/SET_LOADING':{
+        case '@form/SET_LOADING': {
             return {
                 ...state,
-                loading:action.payload
-            }
+                loading: action.payload,
+            };
         }
 
-        default:{
+        default: {
             return state;
         }
     }
-}
+};
 
 export default formReducer;
