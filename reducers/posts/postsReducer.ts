@@ -16,8 +16,8 @@ const postsReducer = (state = initialState, action: PostsActions) => {
     switch (action.type) {
         //@ts-ignore
         case HYDRATE: {
-            //@ts-ignore
-            return { ...action.payload['posts'] };
+             //@ts-ignore
+            return {...state, ...action.payload.posts};
         }
         case '@posts/SET_DATA': {
             return {

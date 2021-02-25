@@ -30,6 +30,9 @@ const Home: NextPage<RootState> = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
+
+
+    console.log(store.getState().posts.data)
     if (!store.getState().posts.data) {
         try {
             //@ts-ignore
