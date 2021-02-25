@@ -1,16 +1,17 @@
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { NextPage } from 'next';
+import { RootState } from '../reducers/rootReducer';
 import Post from '../components/Post';
 import Container from '../components/Container';
 import MainLayout from '../components/MainLayout';
 import Error from '../components/Error';
 import { wrapper } from '../store';
-import { RootState } from '../reducers/rootReducer';
 import getPostsAPI from '../api/getPosts';
 import { postsSetData, postsSetError } from '../reducers/posts/action-creators';
 import { selectPosts, selectPostsError } from '../reducers/posts/selectors';
 import PostInterface from '../types/Post';
+import { getPosts } from '../reducers/posts/actions';
 
 const Home: NextPage<RootState> = () => {
     const posts: PostInterface[] = useSelector(selectPosts);
@@ -31,8 +32,6 @@ const Home: NextPage<RootState> = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
 
-
-    console.log(store.getState().posts.data)
     if (!store.getState().posts.data) {
         try {
             //@ts-ignore
@@ -42,6 +41,8 @@ export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) =
             await store.dispatch(postsSetError(true));
         }
     }
+
+    //store.dispatch(getPosts)
 
     return {
         props: {},

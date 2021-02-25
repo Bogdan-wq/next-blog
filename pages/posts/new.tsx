@@ -8,6 +8,8 @@ import Loading from '../../components/Loading';
 import { formChangeInput} from './../../reducers/form/action-creators';
 import submitNewPost from '../../reducers/form/actions';
 import { selectFormBody, selectFormLoading, selectFormTitle } from '../../reducers/form/selectors';
+import { NextPage } from 'next';
+import { RootState } from '../../reducers/rootReducer';
 
 const Form = styled.form`
     margin-top: 25px;
@@ -47,7 +49,7 @@ const FormSubmit = styled.button`
     font-size: 16px;
 `;
 
-export default function New() {
+export default function New() : NextPage<RootState> {
     const titleValue = useSelector(selectFormTitle);
     const bodyValue = useSelector(selectFormBody);
     const loading = useSelector(selectFormLoading);
